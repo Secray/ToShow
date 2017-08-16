@@ -4,24 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.secray.toshow.MainActivity">
 
-    <com.nightonke.boommenu.BoomMenuButton
-        android:id="@+id/bmb"
+    <include layout="@layout/toolbar"
+        android:id="@+id/include3" />
+
+    <TextView
+        android:id="@+id/pick_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:bmb_buttonEnum="simpleCircle"
-        app:bmb_boomEnum="boomParabola_2"
-        app:bmb_piecePlaceEnum="piecePlace_dot_9_1"
-        app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
-        app:bmb_use3DTransformAnimation="true"
+        android:text="@string/pick_a_picture"
+        android:drawableTop="@drawable/main_photo"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/main_photo_text"
         android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/include3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp" />
-
 </android.support.constraint.ConstraintLayout>

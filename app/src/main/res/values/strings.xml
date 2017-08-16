@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ToShow</string>
+    <string name="permission_camera_rationale">needs Camera permissions.</string>
+    <string name="button_allow">allow</string>
+    <string name="button_deny">deny</string>
+    <string name="permission_camera_denied">Permission Camera denied</string>
+    <string name="permission_camera_neverask">Permission Camera never ask</string>
+    <string name="pick_a_picture">Click to Pick a Picture</string>
 </resources>

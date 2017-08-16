@@ -1,38 +1,43 @@
 package com.secray.toshow;
 
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Toast;
-
-import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
-import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
-import com.nightonke.boommenu.BoomMenuButton;
+import android.content.Intent;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.bmb)
-    BoomMenuButton mBmb;
+public class MainActivity extends BaseActivity {
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
 
-        for (int i = 0; i < mBmb.getPiecePlaceEnum().pieceNumber(); i++) {
-            SimpleCircleButton.Builder builder = new SimpleCircleButton.Builder()
-                    .listener(new OnBMClickListener() {
-                        @Override
-                        public void onBoomButtonClick(int index) {
-                            // When the boom-button corresponding this builder is clicked.
-                            Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            mBmb.addBuilder(builder);
+    @Override
+    protected void initViews() {
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setTitle(null);
         }
-        ActivityCompat.requestPermissions();
+    }
+
+    @Override
+    protected void onWork() {
+
+    }
+
+    @OnClick(R.id.pick_photo)
+    void onPickPhotoClick() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, Constant.REQUSET_PICK_PHOTO_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
