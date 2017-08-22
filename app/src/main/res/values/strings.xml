@@ -6,4 +6,12 @@
     <string name="permission_camera_denied">Permission Camera denied</string>
     <string name="permission_camera_neverask">Permission Camera never ask</string>
     <string name="pick_a_picture">Click to Pick a Picture</string>
+
+    <string name="permission_tip">App Tips</string>
+    <string name="permission_message">To ensure ToShow works properly,the app will need storage permission.</string>
+    <string name="permission_denied_tip">App Warning</string>
+    <string name="permission_denied_message">The storage permission is denied,and ToShow is not work,please go to Settings to grant the storage permission.</string>
+    <string name="permission_go_on">Go on</string>
+    <string name="permission_go_to_setting">Go to Settings</string>
+    <string name="permission_cancel">Cancel</string>
 </resources>

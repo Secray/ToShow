@@ -1,10 +1,10 @@
-package com.secray.toshow.dagger.module;
+package com.secray.toshow.di.module;
 
 import android.app.Activity;
 import android.content.Context;
 
-import com.secray.toshow.dagger.ActivityScope;
-import com.secray.toshow.dagger.ContextScope;
+import com.secray.toshow.di.ActivityScope;
+import com.secray.toshow.di.ContextScope;
 
 import dagger.Module;
 import dagger.Provides;

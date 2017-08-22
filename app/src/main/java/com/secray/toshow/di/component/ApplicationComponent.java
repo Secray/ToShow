@@ -1,10 +1,10 @@
-package com.secray.toshow.dagger.component;
+package com.secray.toshow.di.component;
 
 import android.content.Context;
 
 import com.secray.toshow.App;
-import com.secray.toshow.dagger.ContextScope;
-import com.secray.toshow.dagger.module.ApplicationModule;
+import com.secray.toshow.di.ContextScope;
+import com.secray.toshow.di.module.ApplicationModule;
 
 import javax.inject.Singleton;
 

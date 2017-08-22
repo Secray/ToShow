@@ -1,4 +1,4 @@
-package com.secray.toshow.dagger;
+package com.secray.toshow.di;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

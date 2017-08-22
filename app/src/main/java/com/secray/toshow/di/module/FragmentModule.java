@@ -1,4 +1,4 @@
-package com.secray.toshow.dagger.module;
+package com.secray.toshow.di.module;
 
 import dagger.Module;
 

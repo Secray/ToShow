@@ -1,7 +1,7 @@
-package com.secray.toshow.dagger.component;
+package com.secray.toshow.di.component;
 
-import com.secray.toshow.dagger.FragmentScope;
-import com.secray.toshow.dagger.module.FragmentModule;
+import com.secray.toshow.di.FragmentScope;
+import com.secray.toshow.di.module.FragmentModule;
 
 import dagger.Component;
 

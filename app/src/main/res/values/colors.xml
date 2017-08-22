@@ -6,4 +6,13 @@
 
     <color name="main_photo_text_color">#C1CDCD</color>
     <color name="main_photo_text_color_pressed">#30d1d5</color>
+
+    <color name="colorPrimary_green">#ff35910f</color>
+    <color name="colorPrimaryDark_green">#ffa0ce00</color>
+    <color name="colorAccent_green">#fffbc02d</color>
+
+    <color name="colorPrimary_red">#fff70440</color>
+    <color name="colorPrimaryDark_red">#ffff4e00</color>
+    <color name="colorAccent_red">#fffbc02d</color>
+
 </resources>
