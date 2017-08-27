@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#444153</color>
-    <color name="colorPrimaryDark">#383547</color>
-    <color name="colorAccent">#30d1d5</color>
+    <color name="colorPrimary">@color/primary_material_dark</color>
+    <color name="colorPrimaryDark">@color/primary_dark_material_dark</color>
+    <color name="colorAccent">@color/material_deep_teal_200</color>
 
     <color name="main_photo_text_color">#C1CDCD</color>
     <color name="main_photo_text_color_pressed">#30d1d5</color>
@@ -15,4 +15,5 @@
     <color name="colorPrimaryDark_red">#ffff4e00</color>
     <color name="colorAccent_red">#fffbc02d</color>
 
+    <color name="white_alpha30">#4dffffff</color>
 </resources>

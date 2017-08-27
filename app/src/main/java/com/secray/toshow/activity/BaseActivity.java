@@ -1,10 +1,11 @@
-package com.secray.toshow;
+package com.secray.toshow.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.secray.toshow.App;
 import com.secray.toshow.di.component.ApplicationComponent;
 
 import butterknife.ButterKnife;

@@ -1,12 +1,8 @@
 package com.secray.toshow.mvp.presenter;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.provider.MediaStore;
 
-import com.secray.toshow.Constant;
 import com.secray.toshow.Utils.Log;
 import com.secray.toshow.mvp.contract.MainContract;
 import com.tbruyelle.rxpermissions.RxPermissions;
@@ -15,7 +11,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
-import static com.secray.toshow.MainActivity.REQUEST_CODE;
+import static com.secray.toshow.activity.MainActivity.REQUEST_CODE;
 
 /**
  * Created by xiekui on 17-8-22.

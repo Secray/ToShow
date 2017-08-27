@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:theme="@style/ThemeOverlay.ToShow.TransparentToolbar"
+    android:background="@drawable/toolbar_background"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?actionBarSize"
+    app:contentInsetStart="8.0dip"
+    app:contentInsetLeft="8.0dip"
+    app:popupTheme="@style/ThemeOverlay.ToShow.ToolbarPopup"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:textSize="@dimen/action_button_text_size"
+        android:id="@+id/action_open"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="@string/photo_editor_open"
+        android:contentDescription="@string/photo_editor_open_photo_title"
+        style="@style/ActionPanelTextItem" />
+    <TextView android:textSize="@dimen/action_button_text_size"
+        android:id="@+id/action_done"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="@string/photo_editor_done"
+        android:contentDescription="@string/photo_editor_done_button_description"
+        style="@style/ActionPanelTextItem" />
+</android.support.v7.widget.Toolbar>

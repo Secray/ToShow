@@ -1,4 +1,4 @@
-package com.secray.toshow;
+package com.secray.toshow.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,10 +13,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nightonke.boommenu.BoomMenuButton;
+import com.secray.toshow.Utils.Constant;
+import com.secray.toshow.R;
 import com.secray.toshow.di.ActivityScope;
 import com.secray.toshow.di.component.ApplicationComponent;
 import com.secray.toshow.di.component.DaggerActivityComponent;
@@ -34,12 +34,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public static final int REQUEST_CODE = 0x01;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-   /* @BindView(R.id.main_img)
-    ImageView mPicture;
-    @BindView(R.id.bmb)
-    BoomMenuButton mBmb;*/
-    @BindView(R.id.main_stub)
-    ViewStub mStub;
     @BindView(R.id.pick_photo)
     TextView mPickPhoto;
 
@@ -84,8 +78,11 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mPickPhoto.setVisibility(View.GONE);
-        mStub.inflate();
+        if (data != null && requestCode == Constant.REQUEST_PICK_PHOTO_CODE) {
+            Intent i = new Intent(this, EditorActivity.class);
+            i.setData(data.getData());
+            startActivity(i);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -117,7 +114,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public void startPickPhotoActivity() {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, Constant.REQUSET_PICK_PHOTO_CODE);
+        startActivityForResult(intent, Constant.REQUEST_PICK_PHOTO_CODE);
     }
 
     @Override

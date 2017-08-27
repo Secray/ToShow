@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/main_img"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/edit_toolbar"/>
+
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/editor_bmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24.0dip"
+            android:layout_gravity="end|bottom|center"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            app:bmb_dotRadius="0dp"
+            app:bmb_rippleEffect="true"
+            app:bmb_shadowEffect="true"
+            app:bmb_normalColor="@android:color/white"
+            app:bmb_shadowColor="#55000000"
+            app:bmb_shadowOffsetX="5dp"
+            app:bmb_shadowOffsetY="5dp"
+            app:bmb_shadowRadius="10dp"
+            app:bmb_boomEnum="boomHorizontalThrow_2"
+            app:bmb_buttonEnum="textInsideCircle"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
+            app:bmb_piecePlaceEnum="piecePlace_dot_9_1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_edit"/>
+        </com.nightonke.boommenu.BoomMenuButton>
+    </android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

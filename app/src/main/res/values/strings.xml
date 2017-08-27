@@ -14,4 +14,9 @@
     <string name="permission_go_on">Go on</string>
     <string name="permission_go_to_setting">Go to Settings</string>
     <string name="permission_cancel">Cancel</string>
+
+    <string name="photo_editor_open">Open</string>
+    <string name="photo_editor_open_photo_title">Open photo</string>
+    <string name="photo_editor_done">Done</string>
+    <string name="photo_editor_done_button_description">Save photo and exit</string>
 </resources>
