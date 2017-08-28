@@ -19,4 +19,14 @@
     <string name="photo_editor_open_photo_title">Open photo</string>
     <string name="photo_editor_done">Done</string>
     <string name="photo_editor_done_button_description">Save photo and exit</string>
+
+    <string name="photo_edit_crop">Crop</string>
+    <string name="photo_edit_rotate">Rotate</string>
+    <string name="photo_edit_mosaic">Mosaic</string>
+    <string name="photo_edit_text">Text</string>
+    <string name="photo_edit_water_mark">Watermark</string>
+    <string name="photo_edit_tune_image">Tune Image</string>
+    <string name="photo_edit_filter">Photo Filter</string>
+    <string name="photo_edit_frame">Frames</string>
+    <string name="photo_edit_scrawl">Scrawl</string>
 </resources>

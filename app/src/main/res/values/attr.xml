@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="borderColor" format="color"/>
+    <attr name="fillColor" format="color"/>
+    <attr name="drawBorder" format="boolean"/>
+
+    <declare-styleable name="ColorCircleView">
+        <attr name="borderColor"/>
+        <attr name="fillColor"/>
+        <attr name="drawBorder"/>
+    </declare-styleable>
+</resources>

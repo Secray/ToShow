@@ -3,6 +3,7 @@ package com.secray.toshow.di.component;
 import android.app.Activity;
 import android.content.Context;
 
+import com.secray.toshow.activity.AddTextActivity;
 import com.secray.toshow.activity.EditorActivity;
 import com.secray.toshow.activity.MainActivity;
 import com.secray.toshow.di.ActivityScope;
@@ -23,6 +24,7 @@ public interface ActivityComponent {
     void inject(Activity activity);
     void inject(MainActivity activity);
     void inject(EditorActivity activity);
+    void inject(AddTextActivity activity);
 
     @ContextScope("Activity")
     Context getActivityContext();

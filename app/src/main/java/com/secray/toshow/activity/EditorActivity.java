@@ -1,5 +1,6 @@
 package com.secray.toshow.activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -12,12 +13,14 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.ImageView;
 
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
 import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.Util;
 import com.secray.toshow.App;
 import com.secray.toshow.R;
+import com.secray.toshow.Utils.BmbBuilderManager;
 import com.secray.toshow.di.component.ApplicationComponent;
 import com.secray.toshow.di.component.DaggerActivityComponent;
 import com.secray.toshow.di.module.ActivityModule;
@@ -28,7 +31,7 @@ import butterknife.BindView;
  * Created by android on 17-8-26.
  */
 
-public class EditorActivity extends BaseActivity {
+public class EditorActivity extends BaseActivity implements OnBMClickListener {
     @BindView(R.id.main_img)
     ImageView mEditorPic;
     @BindView(R.id.editor_bmb)
@@ -41,23 +44,7 @@ public class EditorActivity extends BaseActivity {
     @Override
     protected void initViews() {
         for (int i = 0; i < mBmb.getPiecePlaceEnum().pieceNumber(); i++) {
-            TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
-                    .normalImageRes(R.drawable.ic_mosaic_24dp)
-                    .imageRect(new Rect(Util.dp2px(24), Util.dp2px(20), Util.dp2px(56), Util.dp2px(52)))
-                    .buttonRadius(Util.dp2px(40))
-                    .rippleEffect(true)
-                    .normalColor(Color.WHITE)
-                    .normalText("Text")
-                    .maxLines(2)
-                    .textGravity(Gravity.CENTER)
-                    .ellipsize(TextUtils.TruncateAt.MIDDLE)
-                    .textSize(14)
-                    .typeface(Typeface.SANS_SERIF)
-                    .normalTextColor(Color.GRAY)
-                    .pieceColorRes(R.color.colorAccent)
-                    .shadowEffect(true)
-                    .shadowColor(Color.parseColor("#ee000000"));
-            mBmb.addBuilder(builder);
+            mBmb.addBuilder(BmbBuilderManager.getBuilder(i, this));
         }
     }
 
@@ -84,5 +71,10 @@ public class EditorActivity extends BaseActivity {
                 applicationComponent(App.get(this).getApplicationComponent())
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    public void onBoomButtonClick(int index) {
+        startActivity(new Intent(this, AddTextActivity.class));
     }
 }

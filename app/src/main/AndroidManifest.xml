@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.EditorActivity" />
+        <activity android:name=".activity.AddTextActivity" />
     </application>
 
 </manifest>
