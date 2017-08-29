@@ -78,6 +78,10 @@ public class ColorCircleView extends View {
         invalidate();
     }
 
+    public boolean isDrawBorder() {
+        return mIsDrawBorder;
+    }
+
     public int getColor() {
         return mFillColor;
     }

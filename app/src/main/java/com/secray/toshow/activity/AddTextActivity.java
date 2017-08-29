@@ -24,6 +24,8 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     @BindView(R.id.test)
     TextView mTextView;
 
+    TextColorAdapter mTextColorAdapter;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_text;
@@ -36,12 +38,12 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
     @Override
     protected void onWork() {
-        TextColorAdapter adapter = new TextColorAdapter(this);
-        adapter.setOnTextColorItemClickListener(this);
+        mTextColorAdapter = new TextColorAdapter(this);
+        mTextColorAdapter.setOnTextColorItemClickListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mColorList.setLayoutManager(linearLayoutManager);
-        mColorList.setAdapter(adapter);
+        mColorList.setAdapter(mTextColorAdapter);
     }
 
     @Override
@@ -55,7 +57,8 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     }
 
     @Override
-    public void onTextColorChanged(int color) {
+    public void onTextColorChanged(int position, int color) {
+        mTextColorAdapter.notifyAdapter(position);
         mTextView.setTextColor(color);
     }
 }

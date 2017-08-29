@@ -5,5 +5,5 @@ package com.secray.toshow.listener;
  */
 
 public interface OnTextColorItemClickListener {
-    void onTextColorChanged(int color);
+    void onTextColorChanged(int position, int color);
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.secray.toshow.R;
+import com.secray.toshow.Utils.Log;
 import com.secray.toshow.listener.OnTextColorItemClickListener;
 import com.secray.toshow.widget.ColorCircleView;
 
@@ -19,6 +20,7 @@ import static com.secray.toshow.Utils.Constant.TEXT_COLOR_ARRAY;
 public class TextColorAdapter extends RecyclerView.Adapter<TextColorAdapter.ViewHolder> {
     private LayoutInflater mInflater;
     private Context mContext;
+    private int mPosition = -1;
     private OnTextColorItemClickListener mListener;
 
     public void setOnTextColorItemClickListener(OnTextColorItemClickListener listener) {
@@ -51,14 +53,28 @@ public class TextColorAdapter extends RecyclerView.Adapter<TextColorAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             mColorCircleView = (ColorCircleView) itemView.findViewById(R.id.text_color);
+
+            Log.i("xk", "position = " + mPosition + " getAdapterPosition = " + getAdapterPosition());
+            if (mPosition == getAdapterPosition()) {
+                if (!mColorCircleView.isDrawBorder()) {
+                    mColorCircleView.drawBorder(true);
+                }
+            } else {
+                mColorCircleView.drawBorder(false);
+            }
+
             itemView.findViewById(R.id.text_color_root).setOnClickListener(v -> {
-                mColorCircleView.drawBorder(true);
                 if (mListener != null) {
-                    mListener.onTextColorChanged(mColorCircleView.getColor());
+                    mListener.onTextColorChanged(getAdapterPosition(), mColorCircleView.getColor());
                 }
             });
         }
 
         ColorCircleView mColorCircleView;
+    }
+
+    public void notifyAdapter(int position) {
+        mPosition = position;
+        notifyDataSetChanged();
     }
 }
