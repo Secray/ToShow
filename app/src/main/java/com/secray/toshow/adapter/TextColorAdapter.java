@@ -41,6 +41,13 @@ public class TextColorAdapter extends RecyclerView.Adapter<TextColorAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mColorCircleView.setFillColor(mContext.getColor(TEXT_COLOR_ARRAY[position]));
+        if (mPosition == position) {
+            if (!holder.mColorCircleView.isDrawBorder()) {
+                holder.mColorCircleView.drawBorder(true);
+            }
+        } else {
+            holder.mColorCircleView.drawBorder(false);
+        }
     }
 
     @Override
@@ -53,15 +60,6 @@ public class TextColorAdapter extends RecyclerView.Adapter<TextColorAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             mColorCircleView = (ColorCircleView) itemView.findViewById(R.id.text_color);
-
-            Log.i("xk", "position = " + mPosition + " getAdapterPosition = " + getAdapterPosition());
-            if (mPosition == getAdapterPosition()) {
-                if (!mColorCircleView.isDrawBorder()) {
-                    mColorCircleView.drawBorder(true);
-                }
-            } else {
-                mColorCircleView.drawBorder(false);
-            }
 
             itemView.findViewById(R.id.text_color_root).setOnClickListener(v -> {
                 if (mListener != null) {
