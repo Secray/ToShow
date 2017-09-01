@@ -16,4 +16,5 @@
     <color name="colorAccent_red">#fffbc02d</color>
 
     <color name="white_alpha30">#4dffffff</color>
+    <color name="main_text_color">#ff757575</color>
 </resources>

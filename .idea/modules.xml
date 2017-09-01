@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ToShow.iml" filepath="$PROJECT_DIR$/ToShow.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoedit/photoedit.iml" filepath="$PROJECT_DIR$/photoedit/photoedit.iml" />
     </modules>
   </component>
 </project>

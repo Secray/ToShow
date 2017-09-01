@@ -29,4 +29,6 @@
     <string name="photo_edit_filter">Photo Filter</string>
     <string name="photo_edit_frame">Frames</string>
     <string name="photo_edit_scrawl">Scrawl</string>
+    <string name="add_text_bottom_font">font</string>
+    <string name="add_text_bottom_color">color</string>
 </resources>

@@ -36,6 +36,9 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener {
     ImageView mEditorPic;
     @BindView(R.id.editor_bmb)
     BoomMenuButton mBmb;
+
+    String mPicturePath;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_editor;
@@ -60,9 +63,9 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener {
         if (cursor == null) return;
         cursor.moveToFirst();
         int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-        String picturePath = cursor.getString(columnIndex);
+        mPicturePath = cursor.getString(columnIndex);
         cursor.close();
-        mEditorPic.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        mEditorPic.setImageBitmap(BitmapFactory.decodeFile(mPicturePath));
     }
 
     @Override
@@ -75,6 +78,8 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener {
 
     @Override
     public void onBoomButtonClick(int index) {
-        startActivity(new Intent(this, AddTextActivity.class));
+        Intent i = new Intent(this, AddTextActivity.class);
+        i.putExtra("path", mPicturePath);
+        startActivity(i);
     }
 }
