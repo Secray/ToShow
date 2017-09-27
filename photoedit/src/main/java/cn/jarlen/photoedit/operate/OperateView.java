@@ -58,6 +58,11 @@ public class OperateView extends View
 	{
 		this.isMultiAdd = isMultiAdd;
 	}
+
+	public boolean hasImageObject() {
+		return imgLists.size() != 0;
+	}
+
 	public OperateView(Context context, Bitmap resizeBmp)
 	{
 		super(context);
@@ -65,6 +70,7 @@ public class OperateView extends View
 		bgBmp = resizeBmp;
 		int width = bgBmp.getWidth();
 		int height = bgBmp.getHeight();
+		paint.setAntiAlias(true);
 		mCanvasLimits = new Rect(0, 0, width, height);
 	}
 
@@ -232,7 +238,7 @@ public class OperateView extends View
 	 * 
 	 * @return
 	 */
-	private ImageObject getSelected()
+	public ImageObject getSelected()
 	{
 		for (ImageObject ibj : imgLists)
 		{

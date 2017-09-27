@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/action_panel_item_title</item>
+        <item name="actionMenuTextAppearance">@style/ActionMenuTextStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -14,6 +16,7 @@
     </style>
 
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.Toolbar">
@@ -31,23 +34,35 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="ActionPanelItemBase" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
-        <item name="android:textSize">@dimen/action_button_text_size</item>
+    <style name="ActionMenuTextStyle">
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/action_panel_item_title</item>
-        <item name="android:background">?android:selectableItemBackground</item>
+    </style>
+
+    <style name="ActionPanelTextItem" parent="@style/Widget.AppCompat.Light.ActionButton">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/action_panel_item_title</item>
+        <item name="android:background">@drawable/ripple_action_button</item>
         <item name="android:padding">@dimen/action_button_padding</item>
         <item name="android:clickable">true</item>
     </style>
 
-    <style name="ActionPanelTextItem" parent="@style/ActionPanelItemBase">
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="ThemeOverlay.ToShow.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light">
+    <style name="ThemeOverlay.ToShow.ToolbarPopup" parent="@style/AppTheme.NoActionBar.PopupOverlay">
         <item name="android:textSize">@dimen/toolbar_text_font_size</item>
     </style>
 
     <style name="ThemeOverlay.ToShow.TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">@dimen/toolbar_text_font_size</item>
+    </style>
+
+    <style name="ProgressDialogTitle" parent="ActionMenuTextStyle">
+        <item name="android:textSize">@dimen/toolbar_text_font_size</item>
+    </style>
+    <style name="ProgressDialog" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@style/ProgressDialogTitle</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
+        <item name="DialogSpotCount">6</item>
+        <item name="android:background">@drawable/bg_progress_dialog</item>
+        <item name="android:windowBackground">@null</item>
     </style>
 </resources>

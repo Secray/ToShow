@@ -5,15 +5,6 @@
     android:gravity="center"
     android:background="@color/colorPrimaryDark"
     android:layout_height="wrap_content">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/add_text_list"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/text_font"
         android:drawableTop="@drawable/ic_text_18dp"
@@ -29,9 +20,20 @@
         android:drawableTop="@drawable/ic_color_18dp"
         android:text="@string/add_text_bottom_color"
         android:gravity="center"
+        android:layout_marginLeft="@dimen/action_button_padding"
         android:textColor="@color/main_text_color"
         android:textSize="@dimen/add_text_bottom_text_size"
         android:layout_width="@dimen/add_text_bottom_size"
         android:layout_height="@dimen/add_text_bottom_size" />
-    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_add"
+        android:drawableTop="@drawable/ic_text_18dp"
+        android:text="@string/add_text_bottom_add"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/action_button_padding"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/add_text_bottom_text_size"
+        android:layout_width="@dimen/add_text_bottom_size"
+        android:layout_height="@dimen/add_text_bottom_size" />
 </LinearLayout>

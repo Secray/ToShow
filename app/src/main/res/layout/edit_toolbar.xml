@@ -6,24 +6,34 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:minHeight="?actionBarSize"
-    app:contentInsetStart="8.0dip"
-    app:contentInsetLeft="8.0dip"
+    app:contentInsetStart="0dip"
+    app:contentInsetLeft="0dip"
     app:popupTheme="@style/ThemeOverlay.ToShow.ToolbarPopup"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:textSize="@dimen/action_button_text_size"
         android:id="@+id/action_open"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:text="@string/photo_editor_open"
         android:contentDescription="@string/photo_editor_open_photo_title"
         style="@style/ActionPanelTextItem" />
-    <TextView android:textSize="@dimen/action_button_text_size"
-        android:id="@+id/action_done"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:text="@string/photo_editor_done"
-        android:contentDescription="@string/photo_editor_done_button_description"
-        style="@style/ActionPanelTextItem" />
+
+    <!-- <TextView
+         android:textSize="@dimen/action_button_text_size"
+         android:id="@+id/action_cancel"
+         android:layout_width="wrap_content"
+         android:layout_height="fill_parent"
+         android:text="@string/photo_editor_cancel"
+         android:contentDescription="@string/photo_editor_open_photo_title"
+         style="@style/ActionPanelTextItem" />
+
+     <TextView android:textSize="@dimen/action_button_text_size"
+         android:id="@+id/action_done"
+         android:visibility="gone"
+         android:layout_width="wrap_content"
+         android:layout_height="fill_parent"
+         android:text="@string/photo_editor_done"
+         android:contentDescription="@string/photo_editor_done_button_description"
+         style="@style/ActionPanelTextItem" />-->
 </android.support.v7.widget.Toolbar>

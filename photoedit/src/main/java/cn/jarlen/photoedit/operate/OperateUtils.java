@@ -23,6 +23,7 @@ import android.graphics.Matrix;
 import android.graphics.Point;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -72,12 +73,13 @@ public class OperateUtils
 		opt.inInputShareable = true;
 		Bitmap bitmap = BitmapFactory.decodeFile(filePath, opt);
 		int layoutHeight = contentView.getHeight();
+		int layoutWidth = contentView.getWidth();
 		float scale = 0f;
 		int bitmapHeight = bitmap.getHeight();
+		float heightScale = layoutHeight / (bitmapHeight * 1f);
 		int bitmapWidth = bitmap.getWidth();
-		scale = bitmapHeight > bitmapWidth
-				? layoutHeight / (bitmapHeight * 1f)
-				: screenWidth / (bitmapWidth * 1f);
+		float widthScale = layoutWidth / (bitmapWidth * 1f);
+		scale = heightScale > widthScale ? widthScale : heightScale;
 		Bitmap resizeBmp;
 		if (scale != 0)
 		{

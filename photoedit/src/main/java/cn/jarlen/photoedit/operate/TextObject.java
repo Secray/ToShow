@@ -31,7 +31,7 @@ public class TextObject extends ImageObject
 
 	private int textSize = 90;
 	private int color = Color.BLACK;
-	private String typeface;
+	private Typeface typeface;
 	private String text;
 	private boolean bold = false;
 	private boolean italic = false;
@@ -79,11 +79,9 @@ public class TextObject extends ImageObject
 	{
 		paint.setAntiAlias(true);
 		paint.setTextSize(textSize);
-		paint.setTypeface(getTypefaceObj());
+		paint.setTypeface(getTypeface());
 		paint.setColor(color);
 		paint.setStyle(Paint.Style.FILL);
-		paint.setDither(true);
-		paint.setFlags(Paint.SUBPIXEL_TEXT_FLAG);
 		String lines[] = text.split("\n");
 
 		int textWidth = 0;
@@ -97,8 +95,10 @@ public class TextObject extends ImageObject
 			textWidth = 1;
 		if (srcBm != null)
 			srcBm.recycle();
-		srcBm = Bitmap.createBitmap(textWidth, textSize * (lines.length) + 8,
-				Bitmap.Config.ARGB_8888);
+		Paint.FontMetricsInt fm = paint.getFontMetricsInt();
+		int height = fm.bottom - fm.top;
+		srcBm = Bitmap.createBitmap(textWidth, height * (lines.length),
+					Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(srcBm);
 		canvas.drawARGB(0, 0, 0, 0);
 		for (int i = 1; i <= lines.length; i++)
@@ -166,12 +166,15 @@ public class TextObject extends ImageObject
 		this.color = color;
 	}
 
-	public String getTypeface()
+	public Typeface getTypeface()
 	{
+		if (typeface == null) {
+			return Typeface.DEFAULT;
+		}
 		return typeface;
 	}
 
-	public void setTypeface(String typeface)
+	public void setTypeface(Typeface typeface)
 	{
 		this.typeface = typeface;
 	}

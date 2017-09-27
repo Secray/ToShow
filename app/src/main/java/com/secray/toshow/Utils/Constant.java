@@ -1,5 +1,7 @@
 package com.secray.toshow.Utils;
 
+import android.os.Environment;
+
 import com.secray.toshow.R;
 
 /**
@@ -18,4 +20,5 @@ public class Constant {
             R.color.yellow50, R.color.yellow500, R.color.yellow900,
             R.color.teal50, R.color.teal500, R.color.teal900,
             R.color.red50, R.color.red500, R.color.red900};
+    public static final String PIC_SAVE_PATH = Environment.getExternalStorageDirectory().getPath() + "/toshow/picture/";
 }
