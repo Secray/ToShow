@@ -41,6 +41,7 @@ import com.secray.toshow.listener.OnTextColorItemClickListener;
 import com.secray.toshow.listener.OnTextFontItemClickListener;
 import com.secray.toshow.mvp.contract.AddTextContract;
 import com.secray.toshow.mvp.presenter.AddTextPresenter;
+import com.secray.toshow.widget.QMUITipDialog;
 
 import javax.inject.Inject;
 
@@ -77,6 +78,7 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     OperateUtils mOperateUtils;
     TextObject mTextObject;
     SpotsDialog mProgressDialog;
+    QMUITipDialog mTipDialog;
     OperateView mOperateView;
     private boolean mFontSelected;
     private boolean mColorSelected;
@@ -137,8 +139,11 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
                 setTextViewTopDrawable(R.drawable.ic_color_18dp, mTextColor);
                 if (mOperateView.hasImageObject()) {
                     mOperateView.save();
-                    mProgressDialog.show();
-                    mProgressDialog.setMessage(getString(R.string.progress_dialog_saving));
+                    mTipDialog = new QMUITipDialog.Builder(this)
+                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                            .setTipWord(getString(R.string.progress_dialog_saving))
+                            .create();
+                    mTipDialog.show();
                     mPresenter.savePic(mOperateView);
                 } else {
                     new AlertDialog.Builder(this)
@@ -287,14 +292,13 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
     @Override
     public void showMessage(boolean success) {
-        mProgressDialog.dismiss();
-        Snackbar snackbar = Snackbar.make(mImgContent, "", Snackbar.LENGTH_SHORT);
-        View view = getLayoutInflater().inflate(R.layout.snack_bar_content, null);
-        ((ImageView) view.findViewById(R.id.snack_img))
-                .setImageResource(success ? R.drawable.ic_success : R.drawable.ic_fail);
-        ((TextView) view.findViewById(R.id.snack_message))
-                .setText(success ? getString(R.string.save_success) : getString(R.string.save_failed));
-        ViewUtils.snackBarAddView(snackbar, view, 0);
-        snackbar.show();
+        mTipDialog.dismiss();
+        QMUITipDialog dialog = new QMUITipDialog.Builder(this)
+                .setIconType(success ? QMUITipDialog.Builder.ICON_TYPE_SUCCESS
+                        : QMUITipDialog.Builder.ICON_TYPE_FAIL)
+                .setTipWord(success ? getString(R.string.save_success) : getString(R.string.save_failed))
+                .create();
+        dialog.show();
+        mImgContent.postDelayed(() -> dialog.dismiss(), 1000);
     }
 }

@@ -54,9 +54,9 @@ public class AddTextPresenter implements AddTextContract.Presenter {
         Observable.create(
                 (Observable.OnSubscribe<Bitmap>) subscriber
                         -> subscriber.onNext(getBitmapByView(view)))
+                .delay(1000, TimeUnit.MILLISECONDS)
                 .compose(RxHelper.applyIoSchedulers())
                 .map(bitmap -> saveBitmap(bitmap, "toshow" + System.currentTimeMillis() + ""))
-                .delay(1000, TimeUnit.MILLISECONDS)
                 .subscribe(b -> mView.showMessage(b));
     }
 
