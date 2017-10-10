@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 import com.secray.toshow.App;
 import com.secray.toshow.R;
+import com.secray.toshow.Utils.Constant;
 import com.secray.toshow.Utils.Log;
 import com.secray.toshow.Utils.ViewUtils;
 import com.secray.toshow.adapter.TextColorAdapter;
@@ -69,6 +70,8 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     LinearLayout mImgContent;
     @BindView(R.id.text_toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.action_open)
+    TextView mBackAction;
 
     @Inject
     AddTextPresenter mPresenter;
@@ -82,6 +85,7 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     OperateView mOperateView;
     private boolean mFontSelected;
     private boolean mColorSelected;
+    private Bitmap mLastBitmap;
 
     @Override
     protected int getLayoutResId() {
@@ -99,11 +103,12 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
         mProgressDialog = new SpotsDialog(this, R.style.ProgressDialog);
         mOperateUtils = new OperateUtils(this);
+        mBackAction.setText(R.string.back);
 
         mTextFont.setOnClickListener(this);
         mTextColor.setOnClickListener(this);
         mTextAdd.setOnClickListener(this);
-
+        mBackAction.setOnClickListener(this);
     }
 
     @Override
@@ -132,7 +137,9 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_done:
-                hideRecyclerView();
+                if (mColorList.getAlpha() > 0f) {
+                    hideRecyclerView();
+                }
                 mColorSelected = false;
                 mFontSelected = false;
                 setTextViewTopDrawable(R.drawable.ic_text_18dp, mTextFont);
@@ -146,13 +153,12 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
                     mTipDialog.show();
                     mPresenter.savePic(mOperateView);
                 } else {
-                    new AlertDialog.Builder(this)
-                            .setTitle(R.string.app_name)
-                            .setMessage(R.string.pic_not_changed_message)
-                            .setNegativeButton(android.R.string.ok,
-                                    (dialog, which) -> dialog.dismiss())
-                            .create()
-                            .show();
+                    mTipDialog = new QMUITipDialog.Builder(this)
+                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_INFO)
+                            .setTipWord(getString(R.string.pic_not_changed_message))
+                            .create();
+                    mTipDialog.show();
+                    mImgContent.postDelayed(() -> mTipDialog.dismiss(), 1000);
                 }
                 return true;
         }
@@ -220,7 +226,18 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
                         .create();
                 dialog.show();
                 break;
+            case R.id.action_open:
+                onBackPressed();
+                break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, EditorActivity.class);
+        i.putExtra("lastBitmap", mPresenter.getPath());
+        setResult(Constant.REQUEST_EDIT_PHOTO_CODE, i);
+        finish();
     }
 
     void setTextViewTopDrawable(@DrawableRes int id, TextView textView) {
@@ -282,10 +299,12 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
     @Override
     public void showImage(Bitmap bitmap) {
+        mLastBitmap = bitmap;
         mOperateView = new OperateView(AddTextActivity.this, bitmap);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 bitmap.getWidth(), bitmap.getHeight());
         mOperateView.setLayoutParams(layoutParams);
+        mImgContent.removeAllViews();
         mImgContent.addView(mOperateView);
         mOperateView.setMultiAdd(true);
     }
@@ -300,5 +319,6 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
                 .create();
         dialog.show();
         mImgContent.postDelayed(() -> dialog.dismiss(), 1000);
+        mPresenter.loadLastBitmap();
     }
 }

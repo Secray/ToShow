@@ -27,6 +27,8 @@ import rx.Observable;
 
 public class AddTextPresenter implements AddTextContract.Presenter {
     private AddTextContract.View mView;
+    private Bitmap mLastBitmap;
+    private String mPath;
 
     @Inject
     public AddTextPresenter() {
@@ -60,6 +62,18 @@ public class AddTextPresenter implements AddTextContract.Presenter {
                 .subscribe(b -> mView.showMessage(b));
     }
 
+    @Override
+    public void loadLastBitmap() {
+        if (mLastBitmap != null && !mLastBitmap.isRecycled()) {
+            mView.showImage(mLastBitmap);
+        }
+    }
+
+    @Override
+    public String getPath() {
+        return mPath;
+    }
+
     private Bitmap getBitmapByView(View v) {
         Bitmap bitmap = Bitmap.createBitmap(v.getWidth(), v.getHeight(),
                 Bitmap.Config.ARGB_8888);
@@ -85,6 +99,8 @@ public class AddTextPresenter implements AddTextContract.Presenter {
                     out.flush();
                     out.close();
                 }
+                mLastBitmap = bitmap;
+                mPath = file.getPath();
                 return true;
             } catch (IOException e) {
                 e.printStackTrace();

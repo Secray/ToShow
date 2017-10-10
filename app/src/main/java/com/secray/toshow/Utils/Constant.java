@@ -10,6 +10,7 @@ import com.secray.toshow.R;
 
 public class Constant {
     public static final int REQUEST_PICK_PHOTO_CODE = 0x00;
+    public static final int REQUEST_EDIT_PHOTO_CODE = 0x01;
     public static final int[] TEXT_COLOR_ARRAY = new int[] {
             R.color.amber50, R.color.amber500, R.color.amber900,
             R.color.blue50, R.color.blue500, R.color.blue900,

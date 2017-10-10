@@ -43,4 +43,5 @@
     <string name="save_success">save success</string>
     <string name="save_failed">save failed</string>
     <string name="pic_not_changed_message">The picture is not changed.</string>
+    <string name="back">Back</string>
 </resources>
