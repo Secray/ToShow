@@ -368,6 +368,13 @@ public class DrawMosaicView extends ViewGroup
 		return true;
 	}
 
+	public boolean isChanged() {
+		if (touchPaths.size() == 0 && erasePaths.size() == 0) {
+			return false;
+		}
+		return true;
+	}
+
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent event)
 	{

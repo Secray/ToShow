@@ -37,6 +37,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import cn.jarlen.photoedit.operate.OperateUtils;
 
+import static com.secray.toshow.Utils.ViewUtils.OPERATION_ACTIVITYS;
+
 /**
  * Created by android on 17-8-26.
  */
@@ -47,7 +49,6 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     @BindView(R.id.editor_bmb)
     BoomMenuButton mBmb;
 
-    Bitmap mCurrentBitmap;
     OperateUtils mOperateUtils;
 
     @Inject
@@ -71,20 +72,20 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
         mOperateUtils = new OperateUtils(this);
         Uri selectedImage = getIntent().getData();
         mPresenter.generateBitmap(selectedImage, mEditorPic, mOperateUtils);
-//        mEditorPic.setImageBitmap(BitmapFactory.decodeFile(mPicturePath));
     }
 
     @Override
     protected void setupActivityComponent(ApplicationComponent applicationComponent) {
-        DaggerActivityComponent.builder().activityModule(new ActivityModule(this)).
-                applicationComponent(App.get(this).getApplicationComponent())
+        DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(applicationComponent)
                 .build()
                 .inject(this);
     }
 
     @Override
     public void onBoomButtonClick(int index) {
-        Intent i = new Intent(this, AddTextActivity.class);
+        Intent i = new Intent(this, OPERATION_ACTIVITYS[index]);
         i.putExtra("path", mPresenter.getPath());
         startActivityForResult(i, Constant.REQUEST_EDIT_PHOTO_CODE);
     }
@@ -92,9 +93,11 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("onActivityResult");
-        if (data != null && resultCode == Constant.REQUEST_EDIT_PHOTO_CODE) {
-            mPresenter.loadLastBitmap(data.getStringExtra("lastBitmap"), mEditorPic, mOperateUtils);
+        String path = data.getStringExtra("lastBitmap");
+        if (!path.equals(mPresenter.getPath())) {
+            if (data != null && resultCode == Constant.REQUEST_EDIT_PHOTO_CODE) {
+                mPresenter.loadLastBitmap(path, mEditorPic, mOperateUtils);
+            }
         }
     }
 

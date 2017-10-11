@@ -80,12 +80,11 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     TextFontAdapter mTextFontAdapter;
     OperateUtils mOperateUtils;
     TextObject mTextObject;
-    SpotsDialog mProgressDialog;
     QMUITipDialog mTipDialog;
     OperateView mOperateView;
     private boolean mFontSelected;
     private boolean mColorSelected;
-    private Bitmap mLastBitmap;
+    boolean mIsFirst = true;
 
     @Override
     protected int getLayoutResId() {
@@ -101,7 +100,6 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
         initRecyclerView();
 
-        mProgressDialog = new SpotsDialog(this, R.style.ProgressDialog);
         mOperateUtils = new OperateUtils(this);
         mBackAction.setText(R.string.back);
 
@@ -169,8 +167,7 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     protected void setupActivityComponent(ApplicationComponent applicationComponent) {
         DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
-                .applicationComponent(App.get(this)
-                        .getApplicationComponent())
+                .applicationComponent(applicationComponent)
                 .build()
                 .inject(this);
     }
@@ -299,7 +296,6 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
     @Override
     public void showImage(Bitmap bitmap) {
-        mLastBitmap = bitmap;
         mOperateView = new OperateView(AddTextActivity.this, bitmap);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 bitmap.getWidth(), bitmap.getHeight());
@@ -307,6 +303,12 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
         mImgContent.removeAllViews();
         mImgContent.addView(mOperateView);
         mOperateView.setMultiAdd(true);
+
+        if (mIsFirst) {
+            ObjectAnimator alpha = ObjectAnimator.ofFloat(mImgContent, "alpha", 0f, 1f);
+            alpha.start();
+            mIsFirst = false;
+        }
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.View;
 
+import com.secray.toshow.Utils.Log;
 import com.secray.toshow.Utils.RxHelper;
 import com.secray.toshow.di.ContextScope;
 import com.secray.toshow.mvp.contract.EditorContract;
@@ -59,9 +60,10 @@ public class EditorPresenter implements EditorContract.Presenter {
 
     @Override
     public void loadLastBitmap(String path, View view, OperateUtils operateUtils) {
+        mPath = path;
         Observable.create(
                 (Observable.OnSubscribe<Bitmap>) subscriber -> {
-                    subscriber.onNext(operateUtils.compressionFiller(mPath, view));
+                    subscriber.onNext(operateUtils.compressionFiller(path, view));
                 })
                 .compose(RxHelper.applyIoSchedulers())
                 .subscribe(bitmap -> mView.showImage(bitmap));

@@ -1,15 +1,14 @@
 package com.secray.toshow.mvp.presenter;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
 import android.view.View;
 
 import com.secray.toshow.Utils.Constant;
-import com.secray.toshow.Utils.Log;
 import com.secray.toshow.Utils.RxHelper;
-import com.secray.toshow.mvp.contract.AddTextContract;
+import com.secray.toshow.mvp.contract.MosaicContract;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,23 +21,33 @@ import cn.jarlen.photoedit.operate.OperateUtils;
 import rx.Observable;
 
 /**
- * Created by user on 2017/9/25 0025.
+ * Created by user on 2017/10/11 0011.
  */
 
-public class AddTextPresenter implements AddTextContract.Presenter {
-    private AddTextContract.View mView;
+public class MosaicPresenter implements MosaicContract.Presenter {
+    private MosaicContract.View mView;
     private Bitmap mLastBitmap;
     private String mPath;
 
     @Inject
-    public AddTextPresenter() {
+    public MosaicPresenter() {
 
     }
 
+    @Override
+    public void bindView(MosaicContract.View view) {
+        mView = view;
+    }
 
     @Override
-    public void bindView(AddTextContract.View view) {
-        mView = view;
+    public void savePic(Bitmap bitmap) {
+        Observable.create(
+                (Observable.OnSubscribe<Bitmap>) subscriber
+                        -> subscriber.onNext(bitmap))
+                .delay(1000, TimeUnit.MILLISECONDS)
+                .compose(RxHelper.applyIoSchedulers())
+                .map(pic -> saveBitmap(pic, "toshow" + System.currentTimeMillis() + ""))
+                .subscribe(b -> mView.showMessage(b));
     }
 
     @Override
@@ -49,18 +58,6 @@ public class AddTextPresenter implements AddTextContract.Presenter {
                         subscriber.onNext(operateUtils.compressionFiller(path, view)))
                 .compose(RxHelper.applyIoSchedulers())
                 .subscribe(bitmap -> mView.showImage(bitmap));
-
-    }
-
-    @Override
-    public void savePic(View view) {
-        Observable.create(
-                (Observable.OnSubscribe<Bitmap>) subscriber
-                        -> subscriber.onNext(getBitmapByView(view)))
-                .delay(1000, TimeUnit.MILLISECONDS)
-                .compose(RxHelper.applyIoSchedulers())
-                .map(bitmap -> saveBitmap(bitmap, "toshow" + System.currentTimeMillis() + ""))
-                .subscribe(b -> mView.showMessage(b));
     }
 
     @Override
@@ -73,14 +70,6 @@ public class AddTextPresenter implements AddTextContract.Presenter {
     @Override
     public String getPath() {
         return mPath;
-    }
-
-    private Bitmap getBitmapByView(View v) {
-        Bitmap bitmap = Bitmap.createBitmap(v.getWidth(), v.getHeight(),
-                Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        v.draw(canvas);
-        return bitmap;
     }
 
     private boolean saveBitmap(Bitmap bitmap, String name) {
