@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.secray.toshow.activity.AddTextActivity;
+import com.secray.toshow.activity.CropActivity;
 import com.secray.toshow.activity.EditorActivity;
 import com.secray.toshow.activity.MainActivity;
 import com.secray.toshow.activity.MosaicActivity;
@@ -27,6 +28,7 @@ public interface ActivityComponent {
     void inject(EditorActivity activity);
     void inject(AddTextActivity activity);
     void inject(MosaicActivity activity);
+    void inject(CropActivity activity);
 
     @ContextScope("Activity")
     Context getActivityContext();
