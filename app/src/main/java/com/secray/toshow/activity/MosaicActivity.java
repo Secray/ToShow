@@ -1,9 +1,11 @@
 package com.secray.toshow.activity;
 
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -105,6 +107,9 @@ public class MosaicActivity extends BaseActivity implements MosaicContract.View,
                     mMosaicView.postDelayed(() -> mTipDialog.dismiss(), 1000);
                 }
                 break;
+            case R.id.menu_clear:
+                mMosaicView.clear();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -146,6 +151,20 @@ public class MosaicActivity extends BaseActivity implements MosaicContract.View,
 
     @Override
     public void onBackPressed() {
+        if (mMosaicView.isChanged()) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.app_name)
+                    .setMessage(R.string.exit_message)
+                    .setNegativeButton(android.R.string.ok, (dialog, which) -> back())
+                    .setPositiveButton(android.R.string.no, (dialog, which) -> dialog.dismiss())
+                    .create()
+                    .show();
+        } else {
+            back();
+        }
+    }
+
+    private void back() {
         Intent i = new Intent(this, EditorActivity.class);
         i.putExtra("lastBitmap", mPresenter.getPath());
         setResult(Constant.REQUEST_EDIT_PHOTO_CODE, i);

@@ -128,6 +128,8 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.edit_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.menu_clear);
+        menuItem.setVisible(false);
         return true;
     }
 
@@ -231,6 +233,20 @@ public class AddTextActivity extends BaseActivity implements OnTextColorItemClic
 
     @Override
     public void onBackPressed() {
+        if (mOperateView.hasImageObject()) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.app_name)
+                    .setMessage(R.string.exit_message)
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> back())
+                    .setNegativeButton(android.R.string.no, (dialog, which) -> dialog.dismiss())
+                    .create()
+                    .show();
+        } else {
+            back();
+        }
+    }
+
+    private void back() {
         Intent i = new Intent(this, EditorActivity.class);
         i.putExtra("lastBitmap", mPresenter.getPath());
         setResult(Constant.REQUEST_EDIT_PHOTO_CODE, i);
