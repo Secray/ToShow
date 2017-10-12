@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_alignParentBottom="true"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/horizontal_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_content_padding"
+        android:rotation="-90"
+        android:src="@drawable/drawable_rotate_left"/>
+
+    <ImageView
+        android:id="@+id/vertical_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_content_padding"
+        android:src="@drawable/drawable_rotate_right"/>
+
+    <ImageView
+        android:id="@+id/top_down"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_content_padding"
+        android:layout_height="wrap_content"
+        android:src="@drawable/drawable_rotate_vertical"/>
+
+    <ImageView
+        android:id="@+id/left_right"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_content_padding"
+        android:layout_height="wrap_content"
+        android:src="@drawable/drawable_rotate_horizontal"/>
+
+</LinearLayout>

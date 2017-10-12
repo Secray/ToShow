@@ -26,6 +26,7 @@
         <activity android:name=".activity.MosaicActivity" />
         <activity android:name=".activity.CropActivity" />
         <activity android:name=".activity.FramesActivity" />
+        <activity android:name=".activity.RotateActivity" />
     </application>
 
 </manifest>

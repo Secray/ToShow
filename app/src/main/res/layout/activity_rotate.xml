@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/edit_toolbar"
+        android:id="@+id/top_bar"/>
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_below="@+id/top_bar"
+        android:layout_above="@+id/rotate_action"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        layout="@layout/rotate_bottom"
+        android:id="@+id/rotate_action"/>
+</RelativeLayout>
