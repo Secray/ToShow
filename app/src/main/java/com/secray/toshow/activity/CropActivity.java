@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import com.secray.toshow.R;
 import com.secray.toshow.Utils.Constant;
@@ -30,11 +32,13 @@ import cn.jarlen.photoedit.operate.OperateUtils;
  * Created by user on 2017/10/11 0011.
  */
 
-public class CropActivity extends BaseActivity implements CropContract.View {
+public class CropActivity extends BaseActivity implements CropContract.View, View.OnClickListener {
     @BindView(R.id.crop_image)
     CropImageView mCropImageView;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.action_open)
+    TextView mBackAction;
 
     @Inject
     CropPresenter mPresenter;
@@ -98,6 +102,7 @@ public class CropActivity extends BaseActivity implements CropContract.View {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(null);
         }
+        mBackAction.setText(R.string.back);
     }
 
     @Override
@@ -155,5 +160,14 @@ public class CropActivity extends BaseActivity implements CropContract.View {
             back();
         }, 1000);
         //mPresenter.loadLastBitmap();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_open:
+                back();
+                break;
+        }
     }
 }

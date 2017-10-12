@@ -25,6 +25,7 @@
         <activity android:name=".activity.AddTextActivity" />
         <activity android:name=".activity.MosaicActivity" />
         <activity android:name=".activity.CropActivity" />
+        <activity android:name=".activity.FramesActivity" />
     </application>
 
 </manifest>
