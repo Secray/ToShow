@@ -46,4 +46,7 @@
     <string name="pic_not_changed_message">The picture is not changed.</string>
     <string name="back">Back</string>
     <string name="exit_message">The picture has been changed, exit?</string>
+    <string name="brightness">brightness</string>
+    <string name="saturation">saturation</string>
+    <string name="contrast">contrast</string>
 </resources>

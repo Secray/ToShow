@@ -16,4 +16,5 @@
 
     <dimen name="qmui_content_padding_horizontal">16dp</dimen>
     <dimen name="qmui_content_spacing_horizontal">16dp</dimen>
+    <dimen name="content_padding">8dp</dimen>
 </resources>

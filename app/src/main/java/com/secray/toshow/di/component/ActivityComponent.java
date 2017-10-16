@@ -10,6 +10,7 @@ import com.secray.toshow.activity.FramesActivity;
 import com.secray.toshow.activity.MainActivity;
 import com.secray.toshow.activity.MosaicActivity;
 import com.secray.toshow.activity.RotateActivity;
+import com.secray.toshow.activity.TuneImageActivity;
 import com.secray.toshow.di.ActivityScope;
 import com.secray.toshow.di.ContextScope;
 import com.secray.toshow.di.module.ActivityModule;
@@ -33,6 +34,7 @@ public interface ActivityComponent {
     void inject(CropActivity activity);
     void inject(FramesActivity activity);
     void inject(RotateActivity activity);
+    void inject(TuneImageActivity activity);
 
     @ContextScope("Activity")
     Context getActivityContext();

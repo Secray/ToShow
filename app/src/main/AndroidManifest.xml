@@ -27,6 +27,7 @@
         <activity android:name=".activity.CropActivity" />
         <activity android:name=".activity.FramesActivity" />
         <activity android:name=".activity.RotateActivity" />
+        <activity android:name=".activity.TuneImageActivity" />
     </application>
 
 </manifest>
