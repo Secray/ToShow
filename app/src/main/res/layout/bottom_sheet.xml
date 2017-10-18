@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_root"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black_alpha30"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="36dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/action_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit"/>
+            <ImageView
+                android:id="@+id/action_erase"
+                android:layout_marginLeft="@dimen/content_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_erase"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/indicator"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="@dimen/content_padding"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_expand_more"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/content_padding"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/main_photo_text_color"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:text="@string/color"/>
+
+            <TextView
+                android:id="@+id/show_color"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_marginLeft="@dimen/content_padding"
+                android:background="@color/colorAccent"
+                android:textColor="@color/main_photo_text_color"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/action_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:src="@drawable/drawable_color"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_padding"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/main_photo_text_color"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:text="@string/size"/>
+
+            <SeekBar
+                android:id="@+id/seek_size"
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:max="3"
+                android:progress="0"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_padding"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/main_photo_text_color"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/style"/>
+
+            <RadioGroup
+                android:id="@+id/radio_style"
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:orientation="horizontal"
+                android:checkedButton="0"
+                android:paddingLeft="@dimen/content_padding"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rd1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/main_photo_text_color"
+                    android:text="@string/style_one"/>
+                <RadioButton
+                    android:id="@+id/rd2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/main_photo_text_color"
+                    android:text="@string/style_two"/>
+                <RadioButton
+                    android:id="@+id/rd3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/main_photo_text_color"
+                    android:text="@string/style_three"/>
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

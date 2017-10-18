@@ -103,7 +103,7 @@ public class DrawingBoardView extends View
 		paintBitmap = Bitmap.createBitmap(backgroundBitmap.getWidth(),
 				backgroundBitmap.getHeight(), Bitmap.Config.ARGB_8888);
 		paintCanvas = new Canvas(paintBitmap);
-
+		invalidate();
 	}
 
 	
@@ -387,7 +387,7 @@ public class DrawingBoardView extends View
 		paint.setFilterBitmap(true);
 		paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 		canvas.drawBitmap(paintBit, 0, 0, paint);
-		paintBit.recycle();
+		//paintBit.recycle();
 		return bitmap;
 	}
 

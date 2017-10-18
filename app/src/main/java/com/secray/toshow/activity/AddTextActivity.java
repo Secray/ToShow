@@ -2,37 +2,26 @@ package com.secray.toshow.activity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
-import android.support.design.internal.SnackbarContentLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
-import android.view.animation.AnimationSet;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.secray.toshow.App;
 import com.secray.toshow.R;
 import com.secray.toshow.Utils.Constant;
 import com.secray.toshow.Utils.Log;
-import com.secray.toshow.Utils.ViewUtils;
 import com.secray.toshow.adapter.TextColorAdapter;
 import com.secray.toshow.adapter.TextFontAdapter;
 import com.secray.toshow.di.component.ApplicationComponent;
@@ -50,7 +39,6 @@ import butterknife.BindView;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.operate.OperateView;
 import cn.jarlen.photoedit.operate.TextObject;
-import dmax.dialog.SpotsDialog;
 
 /**
  * Created by xiekui on 17-8-28.

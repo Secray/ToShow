@@ -49,4 +49,11 @@
     <string name="brightness">brightness</string>
     <string name="saturation">saturation</string>
     <string name="contrast">contrast</string>
+    <string name="style">style:</string>
+    <string name="size">size:</string>
+    <string name="color">color:</string>
+    <string name="style_one">style one</string>
+    <string name="style_two">style two</string>
+    <string name="style_three">style three</string>
+    <string name="choose_color">Choose color</string>
 </resources>
