@@ -21,7 +21,7 @@ public class BmbBuilderManager {
             R.drawable.ic_frames_24dp,
             R.drawable.ic_mosaic_24dp, R.drawable.ic_palette_24dp,
             R.drawable.ic_photo_filter_24dp, R.drawable.ic_rotate_24dp,
-            R.drawable.ic_watermark_24dp, R.drawable.ic_text_fields_24dp};
+            R.drawable.ic_warp_24dp, R.drawable.ic_text_fields_24dp};
     private static final int[] sTexts = new int[] {
             R.string.photo_edit_tune_image, R.string.photo_edit_crop,
             R.string.photo_edit_frame, R.string.photo_edit_mosaic,

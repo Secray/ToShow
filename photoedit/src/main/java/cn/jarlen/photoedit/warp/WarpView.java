@@ -67,6 +67,7 @@ public class WarpView extends View {
 
     private float scale;
     private RectF dest;
+    private boolean isChanged;
     private double move_x, move_y;
     private int dist = (int) getResources().getDimension(R.dimen.max_dist);
     private int line_height = (int) getResources().getDimension(
@@ -113,6 +114,7 @@ public class WarpView extends View {
 
                 break;
             case MotionEvent.ACTION_MOVE:
+                isChanged = true;
                 max_dist = dist * scale;
                 if (event.getAction() != 1) {
 
@@ -146,6 +148,10 @@ public class WarpView extends View {
         }
         invalidate();
         return true;
+    }
+
+    public boolean isChanged() {
+        return isChanged;
     }
 
     public void setWarpBitmap(Bitmap bmp) {

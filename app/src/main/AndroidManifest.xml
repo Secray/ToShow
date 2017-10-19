@@ -29,6 +29,7 @@
         <activity android:name=".activity.RotateActivity" />
         <activity android:name=".activity.TuneImageActivity" />
         <activity android:name=".activity.ScrawlActivity" />
+        <activity android:name=".activity.WarpActivity" />
     </application>
 
 </manifest>

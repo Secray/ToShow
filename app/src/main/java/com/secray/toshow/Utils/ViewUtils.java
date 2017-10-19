@@ -14,7 +14,7 @@ import com.secray.toshow.activity.MosaicActivity;
 import com.secray.toshow.activity.RotateActivity;
 import com.secray.toshow.activity.ScrawlActivity;
 import com.secray.toshow.activity.TuneImageActivity;
-import com.secray.toshow.activity.WatermarkActivity;
+import com.secray.toshow.activity.WarpActivity;
 
 /**
  * Created by user on 2017/9/25 0025.
@@ -24,7 +24,7 @@ public class ViewUtils {
     public static final Class[] OPERATION_ACTIVITYS =
             new Class[]{TuneImageActivity.class, CropActivity.class, FramesActivity.class,
                     MosaicActivity.class, ScrawlActivity.class, FilterActivity.class,
-                    RotateActivity.class, WatermarkActivity.class, AddTextActivity.class};
+                    RotateActivity.class, WarpActivity.class, AddTextActivity.class};
     public static void snackBarAddView(Snackbar snackBar, View view, int index) {
         View snackBarView = snackBar.getView();
         Snackbar.SnackbarLayout snackBarLayout = (Snackbar.SnackbarLayout) snackBarView;

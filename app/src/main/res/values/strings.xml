@@ -26,7 +26,7 @@
     <string name="photo_edit_rotate">Rotate</string>
     <string name="photo_edit_mosaic">Mosaic</string>
     <string name="photo_edit_text">Text</string>
-    <string name="photo_edit_water_mark">Watermark</string>
+    <string name="photo_edit_warp">Warp</string>
     <string name="photo_edit_tune_image">Tune Image</string>
     <string name="photo_edit_filter">Photo Filter</string>
     <string name="photo_edit_frame">Frames</string>
