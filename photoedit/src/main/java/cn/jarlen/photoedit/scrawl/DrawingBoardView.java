@@ -56,6 +56,8 @@ public class DrawingBoardView extends View
 	/** 上下文 **/
 	private Context context;
 
+	private boolean isChanged;
+
 	public DrawingBoardView(Context context, AttributeSet attributeSet)
 	{
 		super(context, attributeSet);
@@ -133,7 +135,9 @@ public class DrawingBoardView extends View
 		this.mBrushColor = color;
 	}
 	
-	
+	public boolean isChanged() {
+		return isChanged;
+	}
 
 	/**
 	 * 设置画笔
@@ -255,7 +259,7 @@ public class DrawingBoardView extends View
 		@Override
 		public boolean onDown(MotionEvent e)
 		{
-
+			isChanged = true;
 			switch (mDrawStatus)
 			{
 				case PEN_WATER :
@@ -293,7 +297,7 @@ public class DrawingBoardView extends View
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 				float distanceX, float distanceY)
 		{
-
+			isChanged = true;
 			if (isStamp)
 			{
 				//paintSingleStamp(e2.getX(), e2.getY());

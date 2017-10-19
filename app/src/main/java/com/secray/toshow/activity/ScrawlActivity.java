@@ -82,7 +82,6 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
     ScrawlTools mTool;
     DrawAttribute.DrawStatus mStyle;
     boolean mIsChanged;
-    Bitmap mBitmap;
     int mSelectedColor;
     Bitmap mPaintBitmap;
     Bitmap mLastBitmap;
@@ -146,6 +145,7 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        mIsChanged = mScrawlView.isChanged();
         switch (item.getItemId()) {
             case R.id.menu_done:
                 if (mIsChanged) {
@@ -154,8 +154,7 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
                             .setTipWord(getString(R.string.progress_dialog_saving))
                             .create();
                     mTipDialog.show();
-                    if (mBitmap != null && !mBitmap.isRecycled())
-                        mPresenter.savePic(mBitmap);
+                    mPresenter.savePic(mScrawlView.getDrawBitmap());
                 } else {
                     mTipDialog = new QMUITipDialog.Builder(this)
                             .setIconType(QMUITipDialog.Builder.ICON_TYPE_INFO)
@@ -182,16 +181,19 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mBitmap != null && !mBitmap.isRecycled()) {
-            mBitmap.recycle();
-        }
-        if (mPaintBitmap != null && !mPaintBitmap.isRecycled()) {
-            mPaintBitmap.recycle();
+        recycle(mPaintBitmap);
+        recycle(mLastBitmap);
+    }
+
+    private void recycle(Bitmap bitmap) {
+        if (bitmap != null && !bitmap.isRecycled()) {
+            bitmap.recycle();
         }
     }
 
     @Override
     public void onBackPressed() {
+        mIsChanged = mScrawlView.isChanged();
         if (mIsChanged) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.app_name)
@@ -207,7 +209,6 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
 
     @Override
     public void showImage(Bitmap bitmap) {
-        mBitmap = bitmap;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 bitmap.getWidth(), bitmap.getHeight());
         mScrawlView.setLayoutParams(layoutParams);
@@ -333,6 +334,7 @@ public class ScrawlActivity extends BaseActivity implements ScrawlContract.View,
                 mStyle = DrawAttribute.DrawStatus.PEN_WATER;
                 break;
         }
+        mSeekSize.setProgress(3);
         mLastBitmap = mPaintBitmap;
         mTool.creatDrawPainter(mStyle, mPaintBitmap, mSelectedColor);
     }

@@ -20,7 +20,7 @@
                 android:id="@+id/action_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit_pressed"/>
             <ImageView
                 android:id="@+id/action_erase"
                 android:layout_marginLeft="@dimen/content_padding"
@@ -97,7 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:max="3"
-                android:progress="0"
+                android:progress="3"
                 android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content" />
         </LinearLayout>
