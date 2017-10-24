@@ -11,6 +11,10 @@ import com.secray.toshow.Utils.Log;
 import com.secray.toshow.listener.OnTextColorItemClickListener;
 import com.secray.toshow.widget.ColorCircleView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 import static com.secray.toshow.Utils.Constant.TEXT_COLOR_ARRAY;
 
 /**
@@ -59,15 +63,17 @@ public class TextColorAdapter extends RecyclerView.Adapter<TextColorAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mColorCircleView = (ColorCircleView) itemView.findViewById(R.id.text_color);
-
-            itemView.findViewById(R.id.text_color_root).setOnClickListener(v -> {
-                if (mListener != null) {
-                    mListener.onTextColorChanged(getAdapterPosition(), mColorCircleView.getColor());
-                }
-            });
+            ButterKnife.bind(this, itemView);
         }
 
+        @OnClick(R.id.text_color_root)
+        void onClick() {
+            if (mListener != null) {
+                mListener.onTextColorChanged(getAdapterPosition(), mColorCircleView.getColor());
+            }
+        }
+
+        @BindView(R.id.text_color)
         ColorCircleView mColorCircleView;
     }
 

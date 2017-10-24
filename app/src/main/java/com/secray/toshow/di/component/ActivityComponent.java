@@ -6,6 +6,7 @@ import android.content.Context;
 import com.secray.toshow.activity.AddTextActivity;
 import com.secray.toshow.activity.CropActivity;
 import com.secray.toshow.activity.EditorActivity;
+import com.secray.toshow.activity.FilterActivity;
 import com.secray.toshow.activity.FramesActivity;
 import com.secray.toshow.activity.MainActivity;
 import com.secray.toshow.activity.MosaicActivity;
@@ -39,6 +40,7 @@ public interface ActivityComponent {
     void inject(TuneImageActivity activity);
     void inject(ScrawlActivity activity);
     void inject(WarpActivity activity);
+    void inject(FilterActivity activity);
 
     @ContextScope("Activity")
     Context getActivityContext();

@@ -26,7 +26,7 @@ public class BmbBuilderManager {
             R.string.photo_edit_tune_image, R.string.photo_edit_crop,
             R.string.photo_edit_frame, R.string.photo_edit_mosaic,
             R.string.photo_edit_scrawl, R.string.photo_edit_filter,
-            R.string.photo_edit_rotate, R.string.photo_edit_water_mark,
+            R.string.photo_edit_rotate, R.string.photo_edit_warp,
             R.string.photo_edit_text};
 
     public static TextInsideCircleButton.Builder getBuilder(int index, OnBMClickListener listener) {

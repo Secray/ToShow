@@ -30,6 +30,7 @@
         <activity android:name=".activity.TuneImageActivity" />
         <activity android:name=".activity.ScrawlActivity" />
         <activity android:name=".activity.WarpActivity" />
+        <activity android:name=".activity.FilterActivity" />
     </application>
 
 </manifest>

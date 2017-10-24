@@ -56,4 +56,41 @@
     <string name="style_two">style two</string>
     <string name="style_three">style three</string>
     <string name="choose_color">Choose color</string>
+
+    <string name="filter_whitening">whitening</string>
+    <string name="filter_gray">gray</string>
+    <string name="filter_lomo">LOMO</string>
+    <string name="filter_nostalgia">nostalgia</string>
+    <string name="filter_caricature">caricature</string>
+    <string name="filter_black_write">black and write</string>
+    <string name="filter_negative">negative</string>
+    <string name="filter_brown">brown</string>
+    <string name="filter_over_exposure">over exposure</string>
+    <string name="filter_softness">softness</string>
+    <string name="filter_pencil">pencil</string>
+    <string name="filter_sketch">sketch</string>
+    <string name="filter_carve">carve</string>
+    <string name="filter_relief">relief</string>
+    <string name="filter_sharpening">sharpening</string>
+    <string name="filter_normal">normal</string>
+
+    <string-array name="filter_name">
+        <item>@string/filter_normal</item>
+        <item>@string/filter_brown</item>
+        <item>@string/filter_gray</item>
+        <item>@string/filter_lomo</item>
+        <item>@string/filter_nostalgia</item>
+        <item>@string/filter_pencil</item>
+        <item>@string/filter_caricature</item>
+    </string-array>
+
+    <integer-array name="filter_type">
+        <item>1000</item>
+        <item>1310</item>
+        <item>1311</item>
+        <item>1312</item>
+        <item>1313</item>
+        <item>1314</item>
+        <item>1315</item>
+    </integer-array>
 </resources>
