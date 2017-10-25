@@ -18,6 +18,7 @@
     <string name="photo_editor_open">Open</string>
     <string name="photo_editor_open_photo_title">Open photo</string>
     <string name="photo_editor_done">Done</string>
+    <string name="photo_editor_share">Share</string>
     <string name="photo_editor_clear">Clear</string>
     <string name="photo_editor_done_button_description">Save photo and exit</string>
     <string name="photo_editor_cancel">Cancel</string>

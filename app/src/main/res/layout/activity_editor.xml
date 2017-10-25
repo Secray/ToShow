@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
+            app:bmb_autoHide="false"
             app:bmb_dotRadius="0dp"
             app:bmb_rippleEffect="true"
             app:bmb_shadowEffect="true"

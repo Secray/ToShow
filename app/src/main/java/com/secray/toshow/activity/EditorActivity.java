@@ -13,6 +13,9 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -31,6 +34,8 @@ import com.secray.toshow.di.component.DaggerActivityComponent;
 import com.secray.toshow.di.module.ActivityModule;
 import com.secray.toshow.mvp.contract.EditorContract;
 import com.secray.toshow.mvp.presenter.EditorPresenter;
+
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -84,6 +89,30 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_menu, menu);
+        menu.findItem(R.id.menu_done).setVisible(false);
+        menu.findItem(R.id.menu_done).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_share:
+                Uri uri = Uri.fromFile(new File(mPresenter.getPath()));
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_STREAM, uri);
+                intent.setType("image/*");
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBoomButtonClick(int index) {
         Intent i = new Intent(this, OPERATION_ACTIVITYS[index]);
         i.putExtra("path", mPresenter.getPath());
@@ -95,7 +124,7 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
         super.onActivityResult(requestCode, resultCode, data);
         String path = data.getStringExtra("lastBitmap");
         if (!path.equals(mPresenter.getPath())) {
-            if (data != null && resultCode == Constant.REQUEST_EDIT_PHOTO_CODE) {
+            if (resultCode == Constant.REQUEST_EDIT_PHOTO_CODE) {
                 mPresenter.loadLastBitmap(path, mEditorPic, mOperateUtils);
             }
         }

@@ -12,4 +12,11 @@
         android:title="@string/photo_editor_done"
         android:orderInCategory="100"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/photo_editor_done"
+        android:icon="@android:drawable/ic_menu_share"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
 </menu>
