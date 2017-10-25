@@ -2,29 +2,19 @@ package com.secray.toshow.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.text.TextUtils;
-import android.view.Gravity;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
-import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
-import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.Util;
-import com.secray.toshow.App;
+import com.secray.toshow.BuildConfig;
 import com.secray.toshow.R;
 import com.secray.toshow.Utils.BmbBuilderManager;
 import com.secray.toshow.Utils.Constant;
@@ -53,6 +43,8 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     ImageView mEditorPic;
     @BindView(R.id.editor_bmb)
     BoomMenuButton mBmb;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     OperateUtils mOperateUtils;
 
@@ -68,6 +60,10 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     protected void initViews() {
         for (int i = 0; i < mBmb.getPiecePlaceEnum().pieceNumber(); i++) {
             mBmb.addBuilder(BmbBuilderManager.getBuilder(i, this));
+        }
+        setSupportActionBar(mToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(null);
         }
     }
 
@@ -90,10 +86,7 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_menu, menu);
-        menu.findItem(R.id.menu_done).setVisible(false);
-        menu.findItem(R.id.menu_done).setVisible(false);
+        getMenuInflater().inflate(R.menu.edit_menu, menu);
         return true;
     }
 
@@ -101,13 +94,15 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_share:
-                Uri uri = Uri.fromFile(new File(mPresenter.getPath()));
+                Uri uri = FileProvider.getUriForFile(this,
+                        BuildConfig.APPLICATION_ID + ".fileprovider", new File(mPresenter.getPath()));
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setType("image/*");
                 startActivity(intent);
-                break;
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

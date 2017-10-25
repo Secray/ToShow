@@ -88,7 +88,7 @@ public class FramesActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_menu, menu);
+        getMenuInflater().inflate(R.menu.op_menu, menu);
         MenuItem menuItem = menu.findItem(R.id.menu_clear);
         menuItem.setVisible(false);
         return true;

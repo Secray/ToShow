@@ -31,6 +31,16 @@
         <activity android:name=".activity.ScrawlActivity" />
         <activity android:name=".activity.WarpActivity" />
         <activity android:name=".activity.FilterActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 </manifest>

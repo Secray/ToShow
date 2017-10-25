@@ -1,10 +1,8 @@
 package com.secray.toshow.activity;
 
 import android.animation.ObjectAnimator;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -82,7 +80,7 @@ public class MosaicActivity extends BaseActivity implements MosaicContract.View,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_menu, menu);
+        getMenuInflater().inflate(R.menu.op_menu, menu);
         return true;
     }
 

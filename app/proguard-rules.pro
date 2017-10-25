@@ -157,7 +157,7 @@
 }
 
 # 百度地图（jar包换成自己的版本，记得签名要匹配）
--libraryjars libs/baidumapapi_v2_1_3.jar
+#-libraryjars libs/baidumapapi_v2_1_3.jar
 -keep class com.baidu.** {*;}
 -keep class vi.com.** {*;}
 -keep class com.sinovoice.** {*;}
@@ -239,7 +239,8 @@
 }
 
 # Gson
--keepattributes Signature-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes *Annotation*
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
 # 使用Gson时需要配置Gson的解析对象及变量都不混淆。不然Gson会找不到变量。
