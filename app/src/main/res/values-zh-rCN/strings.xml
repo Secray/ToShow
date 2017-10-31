@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">图秀</string>
+    <string name="permission_camera_rationale">图秀需要相机权限。</string>
+    <string name="button_allow">允许</string>
+    <string name="button_deny">拒绝</string>
+    <string name="permission_camera_denied">相机权限拒绝。</string>
+    <string name="permission_camera_neverask">从不询问、</string>
+    <string name="pick_a_picture">选择图片</string>
+
+    <string name="permission_tip">建议</string>
+    <string name="permission_message">为了保证图秀正常运行，需要存储权限。</string>
+    <string name="permission_denied_tip">警告</string>
+    <string name="permission_denied_message">存储权限被拒绝，图秀不能正常运行，请转到设置去开启存储权限。</string>
+    <string name="permission_go_on">继续</string>
+    <string name="permission_go_to_setting">转到设置</string>
+    <string name="permission_cancel">取消</string>
+
+    <string name="photo_editor_open">打开</string>
+    <string name="photo_editor_open_photo_title">打开图库</string>
+    <string name="photo_editor_done">完成</string>
+    <string name="photo_editor_share">分享</string>
+    <string name="photo_editor_clear">清除</string>
+    <string name="photo_editor_done_button_description">保存并退出</string>
+    <string name="photo_editor_cancel">取消</string>
+
+    <string name="photo_edit_crop">剪切</string>
+    <string name="photo_edit_rotate">旋转</string>
+    <string name="photo_edit_mosaic">马赛克</string>
+    <string name="photo_edit_text">文字</string>
+    <string name="photo_edit_warp">Warp</string>
+    <string name="photo_edit_tune_image">增强</string>
+    <string name="photo_edit_filter">滤镜</string>
+    <string name="photo_edit_frame">边框</string>
+    <string name="photo_edit_scrawl">涂鸦</string>
+    <string name="add_text_bottom_font">字体</string>
+    <string name="add_text_bottom_color">颜色</string>
+    <string name="add_text_bottom_add">添加文字</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">打开抽屉</string>
+    <string name="navigation_drawer_close">关闭抽屉</string>
+
+    <string name="action_settings">设置</string>
+    <string name="progress_dialog_saving">保存中...</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_failed">保存失败</string>
+    <string name="pic_not_changed_message">图片没有改变</string>
+    <string name="back">返回</string>
+    <string name="exit_message">图片已经被修改，是否退出？</string>
+    <string name="brightness">亮度</string>
+    <string name="saturation">饱和度</string>
+    <string name="contrast">对比度</string>
+    <string name="style">样式:</string>
+    <string name="size">大小:</string>
+    <string name="color">颜色:</string>
+    <string name="style_one">样式一</string>
+    <string name="style_two">样式一</string>
+    <string name="style_three">样式一</string>
+    <string name="choose_color">选择颜色</string>
+
+    <string name="filter_whitening">美白</string>
+    <string name="filter_gray">灰色</string>
+    <string name="filter_lomo">LOMO</string>
+    <string name="filter_nostalgia">怀旧</string>
+    <string name="filter_caricature">漫画</string>
+    <string name="filter_black_write">黑白</string>
+    <string name="filter_negative">底片</string>
+    <string name="filter_brown">褐色</string>
+    <string name="filter_over_exposure">曝光</string>
+    <string name="filter_softness">柔化</string>
+    <string name="filter_pencil">铅笔画</string>
+    <string name="filter_sketch">拉伸</string>
+    <string name="filter_carve">雕刻</string>
+    <string name="filter_relief">浮雕</string>
+    <string name="filter_sharpening">锐化</string>
+    <string name="filter_normal">正常</string>
+
+    <string-array name="filter_name">
+        <item>@string/filter_normal</item>
+        <item>@string/filter_brown</item>
+        <item>@string/filter_gray</item>
+        <item>@string/filter_lomo</item>
+        <item>@string/filter_nostalgia</item>
+        <item>@string/filter_pencil</item>
+        <item>@string/filter_caricature</item>
+    </string-array>
+
+    <integer-array name="filter_type">
+        <item>1000</item>
+        <item>1310</item>
+        <item>1311</item>
+        <item>1312</item>
+        <item>1313</item>
+        <item>1314</item>
+        <item>1315</item>
+    </integer-array>
+</resources>
