@@ -27,7 +27,7 @@
     <string name="photo_edit_rotate">旋转</string>
     <string name="photo_edit_mosaic">马赛克</string>
     <string name="photo_edit_text">文字</string>
-    <string name="photo_edit_warp">Warp</string>
+    <string name="photo_edit_warp">变形</string>
     <string name="photo_edit_tune_image">增强</string>
     <string name="photo_edit_filter">滤镜</string>
     <string name="photo_edit_frame">边框</string>

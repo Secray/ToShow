@@ -153,8 +153,8 @@ public class MosaicActivity extends BaseActivity implements MosaicContract.View,
             new AlertDialog.Builder(this)
                     .setTitle(R.string.app_name)
                     .setMessage(R.string.exit_message)
-                    .setNegativeButton(android.R.string.ok, (dialog, which) -> back())
-                    .setPositiveButton(android.R.string.no, (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> back())
+                    .setNegativeButton(android.R.string.no, (dialog, which) -> dialog.dismiss())
                     .create()
                     .show();
         } else {

@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -30,7 +31,9 @@ import java.io.File;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import cn.jarlen.photoedit.operate.OperateUtils;
+import rx.annotations.Beta;
 
 import static com.secray.toshow.Utils.ViewUtils.OPERATION_ACTIVITYS;
 
@@ -45,6 +48,8 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
     BoomMenuButton mBmb;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.action_open)
+    TextView mBackAction;
 
     OperateUtils mOperateUtils;
 
@@ -65,6 +70,7 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(null);
         }
+        mBackAction.setText(R.string.back);
     }
 
     @Override
@@ -131,5 +137,10 @@ public class EditorActivity extends BaseActivity implements OnBMClickListener, E
         mEditorPic.setVisibility(View.VISIBLE);
         ObjectAnimator alpha = ObjectAnimator.ofFloat(mEditorPic, "alpha", 0f, 1f);
         alpha.start();
+    }
+
+    @OnClick(R.id.action_open)
+    void onClick() {
+        onBackPressed();
     }
 }

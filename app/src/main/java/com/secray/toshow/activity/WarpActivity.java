@@ -24,6 +24,7 @@ import com.secray.toshow.widget.QMUITipDialog;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.warp.Picwarp;
 import cn.jarlen.photoedit.warp.WarpView;
@@ -171,5 +172,10 @@ public class WarpActivity extends BaseActivity implements WarpContract.View {
         i.putExtra("lastBitmap", mPresenter.getPath());
         setResult(Constant.REQUEST_EDIT_PHOTO_CODE, i);
         finish();
+    }
+
+    @OnClick(R.id.action_open)
+    void onClick() {
+        onBackPressed();
     }
 }
