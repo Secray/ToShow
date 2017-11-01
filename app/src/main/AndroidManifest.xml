@@ -9,28 +9,38 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_toshow"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.EditorActivity" />
-        <activity android:name=".activity.AddTextActivity" />
-        <activity android:name=".activity.MosaicActivity" />
-        <activity android:name=".activity.CropActivity" />
-        <activity android:name=".activity.FramesActivity" />
-        <activity android:name=".activity.RotateActivity" />
-        <activity android:name=".activity.TuneImageActivity" />
-        <activity android:name=".activity.ScrawlActivity" />
-        <activity android:name=".activity.WarpActivity" />
-        <activity android:name=".activity.FilterActivity" />
+        <activity android:name=".activity.EditorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddTextActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MosaicActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CropActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FramesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RotateActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.TuneImageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ScrawlActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WarpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FilterActivity"
+            android:screenOrientation="portrait"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
